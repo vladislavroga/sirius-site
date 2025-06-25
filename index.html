@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сириус</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Babel для обработки JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div id="root"></div>
+
+  <!-- React и ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Ваш App.jsx как скрипт с type="text/babel" -->
+  <script type="text/babel" src="App.jsx"></script>
+</body>
+
+</html>
