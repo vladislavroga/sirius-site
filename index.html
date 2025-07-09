@@ -2,29 +2,449 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сириус</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Babel для обработки JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safehouse - Строительство и ремонт в Гомеле</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f8f8;
+      color: #333;
     }
+
+    header,
+    footer,
+    section {
+      padding: 20px;
+    }
+    .header_menu {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .header_contacts {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    header {
+      background: grey;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 1200px;
+      border-radius: 20px;
+    box-shadow: 0 3px 32px 0 rgba(31, 38, 135, 0.37);
+
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background-image: url(/images/bg1.png);
+      background-size:  cover 100%;
+      background-repeat: no-repeat;
+      color: black;
+      margin: 20px auto;
+      max-width: 1200px;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      
+    }
+.main_text {
+    position: center;
+    background: grey;
+    z-index: 2;
+    padding: 10px;
+     background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px); /* Ключевое свойство для матового стекла */
+  -webkit-backdrop-filter: blur(10px); /* Поддержка Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 40vh;
+  height: 20vh;
+  
+}
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .how-it-works, 
+    .services,    
+    .form-section,
+    .price-list {
+      background: white;
+      margin: 20px auto;
+      max-width: 1000px;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .services h2,
+    .how-it-works h2,
+    .form-section h2,
+    .price-list h2 {
+      text-align: center;
+    }
+
+    .form-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #1771F1;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #ccc;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    footer {
+      background: #eee;
+      text-align: center;
+      font-size: 14px;
+    }
+    /*Код для блока с услугами*/
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      height: 28vh;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      color: white;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .glassy-text {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 15px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+
+    .card:hover .glassy-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glassy-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .glassy-text p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        height: 280px;
+      }
+    }
+
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
-  <div id="root"></div>
+<body>
+  <header>
+    <h1> ООО Проектно - строительная компания "СИРИУС"</h1>
+    <p>Мы помогаем проектировать лучшее</p>
+    <div class="header_menu">
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#price-list">Цены</a>
+      <a href="#form">Заявка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header_button">
+      <button>Получить консультацию</button>
+    </div>
+    <div class="header_contacts">
+          <p>Телефон: +375-29-123-45-67</p>
+          <p>Email: stroyka@gmail.com</p>          
+    </div>    
+    </div>
+  </header>
 
-  <!-- React и ReactDOM -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <section class="hero">
+    <div class="main_text">
+    <h1>Надежное будущее строим вместе</h1>
+    <p>Давайте воплотим Ваши мечты в реальность!</p>
+    </div>
+  </section>
 
-  <!-- Ваш App.jsx как скрипт с type="text/babel" -->
-  <script type="text/babel" src="App.jsx"></script>
+  <section id="services" class="services">
+    <h2>Наши услуги</h2>
+    <div class="cards-container">
+      <div class="card" style="background-image:url(images/1.png)">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Проектирование</h3>
+            <p>Описание первого проекта с эффектом матового стекла. Простой и современный дизайн.</p>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card" style="background-image:url(images/2.png)">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Инженерные изыскания</h3>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Разработка градостроительных концепций</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Разработка и согласование АГО/АГР/АХР</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Эскизное проектирование</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Обмерные работы и обследование</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Реконструкция и капитальный ремонт зданий и сооружений</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Выполнение 3D визуализаций</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Разработка сметной документации</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Осуществление функций технического заказчика</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Осуществление авторского надзора за строительством</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Информационное моделирование зданий (BIM/ТИМ)</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>Портфолио</h2>
+    <div class="cards-container">
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Информационное моделирование зданий (BIM/ТИМ)</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Информационное моделирование зданий (BIM/ТИМ)</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Информационное моделирование зданий (BIM/ТИМ)</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <div class="glassy-text">
+            <h3>Информационное моделирование зданий (BIM/ТИМ)</h3>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+
+  <section id="price-list" class="price-list">
+    <h2>Прайс-лист на услуги</h2>
+    <p><a href="#">Скачать весь прайс</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Наименование работ</th>
+          <th>Ед. изм.</th>
+          <th>Цена от, руб</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Штукатурка по маякам</td>
+          <td>м²</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Монтаж подвесного потолка «Грильято»</td>
+          <td>м²</td>
+          <td>10</td>
+        </tr>
+        <!-- Примерные данные, остальные можно добавить по аналогии -->
+      </tbody>
+    </table>
+  </section>
+
+  <section id="form" class="form-section">
+    <h2>Заполните форму</h2>
+    <form>
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="tel" placeholder="Номер телефона" required>
+      <textarea placeholder="Опишите Вашу заявку"></textarea>
+      <label><input type="checkbox"> Принимаю условия Политики конфиденциальности</label>
+      <button type="submit">Получить консультацию</button>
+    </form>
+  </section>
+
+  <footer id="contacts">
+    <p>ИП Костин А.Н.</p>
+    <p>УНП 11111111111</p>
+    <p>Email: stroyka@gmail.com | Тел: +375-29-123-45-67</p>
+    <p>&copy; Safehouse 2021</p>
+  </footer>
 </body>
 
 </html>
